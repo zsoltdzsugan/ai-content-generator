@@ -1,9 +1,9 @@
 import unittest
 from uuid import UUID
 from datetime import datetime, UTC
-from models.research import *
-from models.source import *
-from models.fact import *
+from src.models.research import *
+from src.models.source import *
+from src.models.fact import *
 
 class TestResearchModel(unittest.TestCase):
     def test_create_research(self):

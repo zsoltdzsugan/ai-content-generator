@@ -1,2 +1,5 @@
 __pycache__/
 ideas/
+.venv
+venv
+.env

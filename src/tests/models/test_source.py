@@ -1,7 +1,7 @@
 import unittest
 from uuid import UUID
 from datetime import datetime, UTC
-from models.source import *
+from src.models.source import *
 
 
 class TestSourceModel(unittest.TestCase):
