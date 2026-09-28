@@ -4,20 +4,26 @@ from datetime import datetime, UTC
 from openai import OpenAI
 from dotenv import load_dotenv
 from models.research import Research
+from models.source import Source, SourceType
+from pipeline.web_process import WebProcess
+from pipeline.html_process import HTMLProcess
 
 class ResearchProcess:
-    def __init__(self) -> None:
-        self.created_at: datetime = datetime.now(UTC)
-        self.finished_at: datetime | None = None
-
-    def run(self, topic: str, prompt: str) -> None:
-        if not topic:
-            raise Exception("No topic provided")
-
+    def run(self, topic: str, url: str, prompt: str = "") -> None:
         research = Research(topic)
         research.start()
 
-        #response = self.get_response()
+        web_process = WebProcess()
+        html_text, err = web_process.fetch(url)
+        if err:
+            raise Exception(err)
+        web_process.download(html_text)
+
+        html_process = HTMLProcess()
+        source = html_process.html_to_source(url, html_text)
+        research.add_source(source)
+
+        research.complete()
 
     def get_response(self):
         load_dotenv()

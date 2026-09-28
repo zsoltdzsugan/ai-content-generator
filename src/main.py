@@ -3,10 +3,14 @@ import sys
 import argparse
 from uuid import UUID
 from pipeline.research_process import ResearchProcess
+from pipeline.web_process import WebProcess
+from pipeline.html_process import HTMLProcess
 
-def generate(topic: str, prompt: str ="") -> None:
-    process = ResearchProcess()
-    process.run(topic, prompt)
+def generate(topic: str, prompt: str = "") -> None:
+    url = "https://hu.ign.com/minecraft/114201/14-ev-utan-uj-dimenzio-erkezik-a-minecraftba-amit-eloszor-egy-masik-jatekban-lehet-majd-bejarni"
+    research_process = ResearchProcess()
+    research_process.run(topic, url, prompt)
+
 
 def main():
     print("Content Generator AI - START")
