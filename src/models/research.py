@@ -58,11 +58,11 @@ class Research():
 
     def complete(self) -> None:
         self.status = ResearchStatus.COMPLETED
-        self.finished_at = dt.datetime.now(UTC)
+        self.finished_at = datetime.now(UTC)
 
     def fail(self) -> None:
         self.status = ResearchStatus.FAILED
-        self.finished_at = dt.datetime.now(UTC)
+        self.finished_at = datetime.now(UTC)
 
     def __eq__(self, other) -> bool:
         if not isinstance(other, Research):
