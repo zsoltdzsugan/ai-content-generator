@@ -68,6 +68,8 @@ def generate(query: str, category: str = "", user_prompt: str = "") -> None:
     progress.finish()
 
 def publish(basepath: str = "/") -> None:
+    basepath = basepath.rstrip("/") + "/"
+
     progress: Progress = Progress(2)
     progress.start("Copying static files")
 
