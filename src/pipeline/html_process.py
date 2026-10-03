@@ -6,7 +6,7 @@ from models.html.leafnode import LeafNode
 from models.html.parentnode import ParentNode
 
 class HTMLProcess:
-    def generate_index(self) -> None:
+    def generate_index(self, basepath="/") -> None:
         content_dir_path: str = "content/blog"
         dest_path: str = "docs/index.html"
 
@@ -42,6 +42,8 @@ class HTMLProcess:
             index_content = f.read()
 
         html: str = index_content.replace("{{ ArticleLinks }}", ul.to_html())
+        html = html.replace('href="/', f'href="{basepath}')
+        html = html.replace('src="/', f'src="{basepath}')
 
         with open(dest_path, "w") as f:
             f.write(html)

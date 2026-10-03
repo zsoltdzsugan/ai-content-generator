@@ -67,7 +67,7 @@ def generate(query: str, category: str = "", user_prompt: str = "") -> None:
 
     progress.finish()
 
-def publish() -> None:
+def publish(basepath: str = "/") -> None:
     progress: Progress = Progress(2)
     progress.start("Copying static files")
 
@@ -84,7 +84,7 @@ def publish() -> None:
     html_process: HTMLProcess = HTMLProcess()
 
     try:
-        html_process.generate_index()
+        html_process.generate_index(basepath)
         html_process.generate_pages_recursive("content", "src/template.html", "docs", basepath)
     except Exception as e:
         progress.finish("Failed")
@@ -100,6 +100,7 @@ def main() -> None:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     parser_pub = subparsers.add_parser("publish", aliases=["p"], help="Publish all content")
+    parser_pub.add_argument("path", type=str, help="Publish path")
 
     parser_gen = subparsers.add_parser("generate", aliases=["g", "gen"], help="Generate content")
     parser_gen.add_argument("query", type=str, help="Query content")
@@ -117,7 +118,7 @@ def main() -> None:
 
     match (args.command):
         case "p" | "publish":
-            publish()
+            publish(args.path)
 
         case "g" | "gen" | "generate":
             print(f"Generate for: {args.query} in {args.category} with prompt: {args.prompt}")
