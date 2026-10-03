@@ -72,7 +72,6 @@ def publish(basepath: str = "/") -> None:
     progress.start("Copying static files")
 
     try:
-        basepath: str = "/"
         copy_static_to_public("static", "docs")
     except Exception as e:
         progress.finish("Failed")
@@ -100,7 +99,7 @@ def main() -> None:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     parser_pub = subparsers.add_parser("publish", aliases=["p"], help="Publish all content")
-    parser_pub.add_argument("path", type=str, help="Publish path")
+    parser_pub.add_argument("basepath", type=str, help="Publish path")
 
     parser_gen = subparsers.add_parser("generate", aliases=["g", "gen"], help="Generate content")
     parser_gen.add_argument("query", type=str, help="Query content")
@@ -118,7 +117,7 @@ def main() -> None:
 
     match (args.command):
         case "p" | "publish":
-            publish(args.path)
+            publish(args.basepath)
 
         case "g" | "gen" | "generate":
             print(f"Generate for: {args.query} in {args.category} with prompt: {args.prompt}")
