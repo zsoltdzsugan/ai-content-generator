@@ -38,8 +38,13 @@ class HTMLProcess:
 
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
 
+        with open(dest_path, "r") as f:
+            index_content = f.read()
+
+        html: str = index_content.replace("{{ ArticleLinks }}", ul.to_html())
+
         with open(dest_path, "w") as f:
-            f.write(ul.to_html())
+            f.write(html)
 
     def generate_page(self, from_path, template_path, dest_path, basepath="/", markdown_process: MarkdownProcess | None = None) -> None:
         #print(f"Generating page from {from_path} to {dest_path} using {template_path}")
