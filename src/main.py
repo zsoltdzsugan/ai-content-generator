@@ -119,6 +119,9 @@ def main() -> None:
 
     match (args.command):
         case "p" | "publish":
+            if not args.basepath:
+                parser.print_help()
+                sys.exit(1)
             publish(args.basepath)
 
         case "g" | "gen" | "generate":
