@@ -84,6 +84,7 @@ def publish() -> None:
     html_process: HTMLProcess = HTMLProcess()
 
     try:
+        html_process.generate_index()
         html_process.generate_pages_recursive("content", "src/template.html", "docs", basepath)
     except Exception as e:
         progress.finish("Failed")

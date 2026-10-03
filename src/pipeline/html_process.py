@@ -1,9 +1,46 @@
 import os
 from bs4 import BeautifulSoup
-from models.source import *
 from pipeline.markdown_process import MarkdownProcess
+from models.source import *
+from models.html.leafnode import LeafNode
+from models.html.parentnode import ParentNode
 
 class HTMLProcess:
+    def generate_index(self) -> None:
+        content_dir_path: str = "content/blog"
+        dest_path: str = "docs/index.html"
+
+        if not os.path.exists(content_dir_path):
+            raise Exception("Content path does not exists")
+
+        md_process: MarkdownProcess = MarkdownProcess()
+        list_items: list[HTMLNode] = []
+
+        for filename in os.listdir(content_dir_path):
+            if not filename.endswith(".md"):
+                continue
+
+            source_path: str = os.path.join(content_dir_path, filename)
+
+            if not os.path.isfile(source_path):
+                continue
+
+            with open(source_path, "r") as f:
+                markdown: str = f.read()
+
+            title: str = md_process.extract_title(markdown)
+            html_filename: str = filename.removesuffix(".md") + ".html"
+
+            link: LeafNode = LeafNode("a", title, {"href": f"blog/{html_filename}"})
+            list_items.append(ParentNode("li", [link]))
+
+        ul: ParentNode = ParentNode("ul", list_items)
+
+        os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+
+        with open(dest_path, "w") as f:
+            f.write(ul.to_html())
+
     def generate_page(self, from_path, template_path, dest_path, basepath="/", markdown_process: MarkdownProcess | None = None) -> None:
         #print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
