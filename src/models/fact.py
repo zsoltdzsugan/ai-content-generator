@@ -28,10 +28,10 @@ class Fact:
         if isinstance(source, Source) and source in self.sources:
             self.sources.remove(source)
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Fact):
            return False
         return self.__id == other.get_id()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Fact(statement={self.statement}, confidence={self.confidence}, sources={len(self.sources)})"

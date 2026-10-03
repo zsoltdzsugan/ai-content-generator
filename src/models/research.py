@@ -12,9 +12,9 @@ class ResearchStatus(Enum):
 
 
 class Research():
-    def __init__(self, topic: str, status: ResearchStatus = ResearchStatus.CREATED, sources: list[Source] | None = None, facts: list[Fact] | None = None) -> None:
+    def __init__(self, query: str, status: ResearchStatus = ResearchStatus.CREATED, sources: list[Source] | None = None, facts: list[Fact] | None = None) -> None:
         self.__id: UUID = uuid4()
-        self.topic: str = topic
+        self.query: str = query
         self.status: ResearchStatus = status
         self.sources: list[Source] = sources if sources is not None else []
         self.facts: list[Fact] = facts if facts is not None else []
@@ -29,6 +29,14 @@ class Research():
     def add_source(self, source: Source) -> None:
         if isinstance(source, Source) and source not in self.sources:
             self.sources.append(source)
+
+    def add_sources(self, sources: list[Source]) -> None:
+        if not sources:
+            return
+
+        for source in sources:
+            if isinstance(source, Source) and source not in self.sources:
+                self.sources.append(source)
 
     def remove_source(self, source: Source) -> None:
         if isinstance(source, Source) and source in self.sources:
@@ -64,10 +72,10 @@ class Research():
         self.status = ResearchStatus.FAILED
         self.finished_at = datetime.now(UTC)
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Research):
             return False
         return self.__id == other.get_id()
 
     def __repr__(self) -> str:
-        return f"Research(topic={self.topic}, status={self.status}, created_at={self.created_at}, finished_at={self.finished_at}, sources={len(self.sources)}, facts={len(self.facts)})"
+        return f"Research(query={self.query}, status={self.status}, created_at={self.created_at}, finished_at={self.finished_at}, sources={len(self.sources)}, facts={len(self.facts)})"

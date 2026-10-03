@@ -9,7 +9,7 @@ class WebProcess:
         if not url:
             return "", "No url provided"
 
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
         if response.status_code != 200:
             return "", f"Failed to retrieve page. Status code: {response.status_code}"
 
