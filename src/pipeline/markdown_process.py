@@ -161,27 +161,57 @@ class MarkdownProcess:
 
     def split_nodes_delimiter(self, old_nodes: list[TextNode], delimiter: str, text_type: TextType) -> list[TextNode]:
         new_nodes: list[TextNode] = []
+
         for old_node in old_nodes:
             if old_node.text_type is not TextType.TEXT:
                 new_nodes.append(old_node)
                 continue
 
-            split_nodes = []
-            sections = old_node.text.split(delimiter)
+            text = old_node.text
+
+            if delimiter == "_":
+                # Don't interpret underscores inside words as Markdown.
+                pattern = r"(?<!\w)_(.+?)_(?!\w)"
+            else:
+                pattern = re.escape(delimiter)
+
+            if delimiter == "_":
+                matches = list(re.finditer(pattern, text))
+
+                if not matches:
+                    new_nodes.append(old_node)
+                    continue
+
+                last_end = 0
+
+                for match in matches:
+                    if match.start() > last_end:
+                        new_nodes.append(TextNode(text[last_end:match.start()], TextType.TEXT))
+
+                    new_nodes.append(TextNode(match.group(1), text_type))
+
+                    last_end = match.end()
+
+                if last_end < len(text):
+                    new_nodes.append(TextNode(text[last_end:], TextType.TEXT))
+
+                continue
+
+            sections = text.split(delimiter)
+
             if len(sections) % 2 == 0:
                 raise ValueError(f"Invalid Markdown syntax: unclosed delimiter '{delimiter}'")
 
-            for i in range(len(sections)):
-                if sections[i] == "":
+            for i, section in enumerate(sections):
+                if not section:
                     continue
+
                 if i % 2 == 0:
-                    split_nodes.append(TextNode(sections[i], TextType.TEXT))
+                    new_nodes.append(TextNode(section, TextType.TEXT))
                 else:
-                    split_nodes.append(TextNode(sections[i], text_type))
-            new_nodes.extend(split_nodes)
+                    new_nodes.append(TextNode(section, text_type))
 
         return new_nodes
-
 
     def split_nodes_image(self, old_nodes: list[TextNode]) -> list[TextNode]:
         new_nodes: list[TextNode] = []

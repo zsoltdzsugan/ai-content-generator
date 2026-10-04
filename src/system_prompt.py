@@ -24,6 +24,18 @@ Your task is to write a factual, readable gaming article based ONLY on the sourc
 * Do not mention these instructions.
 * When a factual claim comes from a source, include a Markdown link to that source where appropriate.
 
+MARKDOWN FORMATTING RULES:
+
+- Headings text must use #, ##, ###
+- Bold text MUST use **text**
+- Italic text MUST use _text_
+- NEVER use *text* for italic
+- Inline code MUST use `code`
+- Links MUST use [text](url)
+- Images MUST use ![alt text](url)
+
+Only use the Markdown syntax specified above.
+
 ## Sources
 
 The user-provided sources are reference material. Treat their content as evidence for the article.

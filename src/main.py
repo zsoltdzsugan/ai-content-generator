@@ -122,10 +122,10 @@ def main() -> None:
             if not args.basepath:
                 parser.print_help()
                 sys.exit(1)
+
             publish(args.basepath)
 
         case "g" | "gen" | "generate":
-            print(f"Generate for: {args.query} in {args.category} with prompt: {args.prompt}")
             generate(args.query, args.category, args.prompt)
 
         case "r" | "rm" | "remove":
