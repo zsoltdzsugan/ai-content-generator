@@ -95,8 +95,6 @@ def publish(basepath: str = "/") -> None:
 
 
 def main() -> None:
-    print("Content Generator AI - START")
-
     parser = argparse.ArgumentParser(prog="cgai", description="Content Generator AI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -141,8 +139,6 @@ def main() -> None:
 
     if args.verbose:
         print(f"User prompt: {args}")
-
-    print("Content Generator AI - END")
 
 if __name__ == "__main__":
     main()

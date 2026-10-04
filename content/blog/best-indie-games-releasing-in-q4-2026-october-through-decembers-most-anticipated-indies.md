@@ -42,13 +42,13 @@ As release dates solidify and more games announce their Q4 positioning, these te
 
 ## Sources
 
-* [Top 25 Best Indie Games of April 2026](https://www.youtube.com/watch?v=ehiknQM5tUg)
-* [Upcoming indie games for 2026 and beyond | GamesRadar+](https://www.gamesradar.com/upcoming-indie-games)
-* [19 Best Indie Games to Play in 2026: Expert Picks by Genre](https://www.eneba.com/hub/games/best-indie-games)
-* [GIG Is Back - Top 10 Indie Games out September 2026](https://www.youtube.com/watch?v=dtOGCdQeFZ0)
-* [10 Best Indie Games Of 2026 So Far, Ranked](https://www.thegamer.com/best-indie-games-of-2026-so-far)
-* [Indie Gaming This Week: 28 September - 04 October 2026](https://www.youtube.com/watch?v=UTJq0QwMdA0)
-* [Indie Game Release Round-Up: October 2026](https://www.greenmangaming.com/blog/indie-game-release-round-up-october-2026)
-* [Best New Indie Games From Gamescom 2026](https://www.youtube.com/watch?v=-cKzePMxAZk)
-* [List of video games released in 2026 - Wikipedia](https://en.wikipedia.org/wiki/List_of_video_games_released_in_2026)
-* [I Found 10+ New Indie Games Coming October 2026 You Can't Afford to Miss!](https://www.youtube.com/watch?v=yoGB_xB7vwc)
+- [Top 25 Best Indie Games of April 2026](https://www.youtube.com/watch?v=ehiknQM5tUg)
+- [Upcoming indie games for 2026 and beyond | GamesRadar+](https://www.gamesradar.com/upcoming-indie-games)
+- [19 Best Indie Games to Play in 2026: Expert Picks by Genre](https://www.eneba.com/hub/games/best-indie-games)
+- [GIG Is Back - Top 10 Indie Games out September 2026](https://www.youtube.com/watch?v=dtOGCdQeFZ0)
+- [10 Best Indie Games Of 2026 So Far, Ranked](https://www.thegamer.com/best-indie-games-of-2026-so-far)
+- [Indie Gaming This Week: 28 September - 04 October 2026](https://www.youtube.com/watch?v=UTJq0QwMdA0)
+- [Indie Game Release Round-Up: October 2026](https://www.greenmangaming.com/blog/indie-game-release-round-up-october-2026)
+- [Best New Indie Games From Gamescom 2026](https://www.youtube.com/watch?v=-cKzePMxAZk)
+- [List of video games released in 2026 - Wikipedia](https://en.wikipedia.org/wiki/List_of_video_games_released_in_2026)
+- [I Found 10+ New Indie Games Coming October 2026 You Can't Afford to Miss!](https://www.youtube.com/watch?v=yoGB_xB7vwc)

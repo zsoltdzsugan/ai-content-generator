@@ -33,6 +33,8 @@ MARKDOWN FORMATTING RULES:
 - Inline code MUST use `code`
 - Links MUST use [text](url)
 - Images MUST use ![alt text](url)
+- Unordered lists MUST use "- " at the beginning of each item.
+- NEVER use "* " for unordered lists.
 
 Only use the Markdown syntax specified above.
 
